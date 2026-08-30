@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <title>WOOF N’ PURR — Elevated Pet Essentials</title>
+  <meta name="description" content="Elevated essentials for pets and the homes they live in.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="utility">
+    <div class="container utility-inner">
+      <span>SECURE CHECKOUT</span>
+      <span aria-hidden="true">•</span>
+      <span>60-DAY RETURNS</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container masthead">
+      <button class="menu-button" type="button" id="menuToggle" aria-expanded="false" aria-controls="mobileNav">MENU</button>
+
+      <a class="wordmark" href="/" aria-label="Woof N’ Purr home">WOOF N’ PURR</a>
+
+      <div class="masthead-actions">
+        <button class="text-action search-toggle" id="searchToggle" type="button">SEARCH</button>
+        <button class="text-action cart-open" id="cartOpen" type="button">
+          BAG <span id="cartCount">(0)</span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="container desktop-nav" aria-label="Primary navigation">
+      <button class="nav-item active" type="button" data-filter="All">NEW &amp; FEATURED</button>
+      <button class="nav-item" type="button" data-filter="Home">HOME</button>
+      <button class="nav-item" type="button" data-filter="Travel">TRAVEL</button>
+      <button class="nav-item" type="button" data-filter="Grooming">GROOMING</button>
+      <button class="nav-item" type="button" data-filter="Wear">COLLARS</button>
+    </nav>
+
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <button type="button" data-filter="All">NEW &amp; FEATURED</button>
+      <button type="button" data-filter="Home">HOME</button>
+      <button type="button" data-filter="Travel">TRAVEL</button>
+      <button type="button" data-filter="Grooming">GROOMING</button>
+      <button type="button" data-filter="Wear">COLLARS</button>
+    </div>
+
+    <div class="search-panel" id="searchPanel" hidden>
+      <form class="container search-form" id="searchForm" role="search">
+        <label class="sr-only" for="searchInput">Search products</label>
+        <input id="searchInput" type="search" placeholder="Search Woof N’ Purr" autocomplete="off">
+        <button type="submit">SEARCH</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-image">
+        <img src="/assets/hero-pawbridge.jpg" alt="Small dog using PawBridge pet stairs beside a sofa">
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow">THE PAWBRIDGE COLLECTION</p>
+        <h1>Designed for the<br>way they live.</h1>
+        <p class="hero-description">A quieter step up. PawBridge helps pets reach the places they love with less jumping and a form that belongs in your home.</p>
+        <p class="hero-product-name">PawBridge Pet Stairs <span>$39.99</span></p>
+        <div class="hero-actions">
+          <button class="button button-dark add-btn" type="button" data-id="pawbridge">ADD TO BAG</button>
+          <button class="button button-light" type="button" data-quick="pawbridge">DISCOVER</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement container">
+      <p class="eyebrow">WOOF N’ PURR</p>
+      <h2>Pet essentials, considered<br>like objects for the home.</h2>
+      <p>Useful, clean, comfortable pieces selected for everyday life with dogs and cats.</p>
+    </section>
+
+    <section class="catalog container" id="products">
+      <div class="catalog-head">
+        <div>
+          <p class="eyebrow">THE COLLECTION</p>
+          <h2>Shop all</h2>
+        </div>
+        <label class="sort-control">
+          <span>SORT</span>
+          <select id="sortSelect">
+            <option value="featured">FEATURED</option>
+            <option value="low">PRICE: LOW TO HIGH</option>
+            <option value="high">PRICE: HIGH TO LOW</option>
+            <option value="available">AVAILABLE FIRST</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="active-search" id="activeSearch" hidden>
+        <span id="activeSearchText"></span>
+        <button type="button" id="clearSearch">CLEAR</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+      <p class="empty" id="emptyState" hidden>No pieces match your search.</p>
+    </section>
+
+    <section class="service-strip">
+      <div class="container service-grid">
+        <div><span>01</span><strong>SECURE PAYMENT</strong><p>Stripe-hosted checkout once your private key is connected.</p></div>
+        <div><span>02</span><strong>60-DAY RETURNS</strong><p>A clear, customer-first return experience.</p></div>
+        <div><span>03</span><strong>US DELIVERY</strong><p>Shipping details collected securely during checkout.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-top">
+      <div>
+        <a class="footer-wordmark" href="/">WOOF N’ PURR</a>
+        <p>Elevated essentials for pets and the homes they live in.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#products">SHOP</a>
+        <button type="button" id="footerSearch">SEARCH</button>
+        <button type="button" class="cart-open">BAG</button>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 WOOF N’ PURR</span>
+      <span>PAYMENTS SECURED BY STRIPE</span>
+    </div>
+  </footer>
+
+  <div class="backdrop" id="cartBackdrop" hidden>
+    <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <header class="drawer-header">
+        <h2 id="cartTitle">YOUR BAG</h2>
+        <button class="close-button" id="cartClose" type="button" aria-label="Close bag">CLOSE</button>
+      </header>
+      <div class="cart-items" id="cartItems"></div>
+      <footer class="drawer-footer">
+        <div class="subtotal">
+          <span>SUBTOTAL</span>
+          <strong id="cartSubtotal">$0.00</strong>
+        </div>
+        <p class="checkout-note">Shipping and taxes are finalized in secure checkout.</p>
+        <button class="button button-dark checkout-button" id="checkoutButton" type="button">SECURE CHECKOUT</button>
+      </footer>
+    </aside>
+  </div>
+
+  <div class="backdrop quick-backdrop" id="quickBackdrop" hidden>
+    <section class="quick-view" role="dialog" aria-modal="true" aria-labelledby="quickName">
+      <button class="quick-close" id="quickClose" type="button" aria-label="Close product">CLOSE</button>
+      <div class="quick-media"><img id="quickImage" src="" alt=""></div>
+      <div class="quick-info">
+        <p class="eyebrow" id="quickCategory"></p>
+        <h2 id="quickName"></h2>
+        <p class="quick-price" id="quickPrice"></p>
+        <p class="quick-description" id="quickDescription"></p>
+        <p class="availability" id="quickAvailability"></p>
+        <button class="button button-dark" id="quickAdd" type="button">ADD TO BAG</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/script.js" defer></script>
+</body>
+</html>
