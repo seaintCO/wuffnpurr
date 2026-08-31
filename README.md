@@ -1,14 +1,9 @@
-# Woof N’ Purr — GitHub + Vercel
+# Woof N' Purr — September 10 Launch Build
 
-Ready to push to GitHub main and deploy on Vercel.
+All products display as available September 10, 2026 and the homepage includes a live countdown.
 
-## Stripe
-In Vercel > Project > Settings > Environment Variables add:
-STRIPE_SECRET_KEY=your Stripe secret key
+Photos, styles, and browser JavaScript live in `/public` so Vite copies them into every production build.
 
-Use a test key first. Replace with your live key when ready for real charges.
-Never commit a real secret key to GitHub.
-
-## Local
+Run:
 npm install
 npm run dev
