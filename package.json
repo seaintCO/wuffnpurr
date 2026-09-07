@@ -1,14 +1,16 @@
 {
-  "name": "woof-n-purr",
+  "name": "woof-n-purr-live",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "stripe:sync": "node scripts/sync-stripe.js"
   },
   "dependencies": {
+    "dotenv": "^16.6.1",
     "stripe": "^18.5.0"
   },
   "devDependencies": {

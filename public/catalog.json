@@ -1,0 +1,11 @@
+[
+  {"id":"pawbridge","name":"PawBridge Pet Stairs","price":39.99,"category":"Home","image":"pawbridge-stairs.jpg","description":"Soft-step stairs designed to make beds, sofas and favorite spaces easier to reach."},
+  {"id":"haven","name":"Haven Pet Bed","price":79.99,"category":"Home","image":"haven-pet-bed.jpg","description":"A supportive everyday bed created for comfortable lounging and overnight rest."},
+  {"id":"companion","name":"Companion Collar","price":24.99,"category":"Wear","image":"companion-collar.jpg","description":"A refined adjustable collar built for everyday comfort, walks and identification."},
+  {"id":"waypoint","name":"Waypoint Travel Kit","price":49.99,"category":"Travel","image":"waypoint-travel-kit.jpg","description":"A considered travel system for road trips, weekends away and daily life on the move."},
+  {"id":"shedaway","name":"ShedAway Vacuum","price":44.99,"category":"Grooming","image":"shedaway-vacuum.jpg","description":"Compact pet-hair cleanup for furniture, rugs, vehicles and the places fur collects most."},
+  {"id":"roadpaws","name":"RoadPaws","price":54.99,"category":"Travel","image":"roadpaws.jpg","description":"A padded travel seat created for cleaner, calmer and more comfortable car rides."},
+  {"id":"nailgrinder","name":"Pet Nail Grinder","price":19.99,"category":"Grooming","image":"pet-nail-grinder.jpg","description":"Controlled at-home nail care in a compact format made for routine grooming."},
+  {"id":"freshnest","name":"FreshNest","price":249.99,"category":"Home","image":"freshnest.jpg","description":"A premium self-cleaning home-care solution created to simplify daily litter maintenance."},
+  {"id":"gentlegroom","name":"GentleGroom","price":29.99,"category":"Grooming","image":"gentlegroom.jpg","description":"Gentle coat care for detangling, brushing and everyday loose-hair removal."}
+]
