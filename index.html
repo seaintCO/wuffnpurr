@@ -11,7 +11,9 @@
 <body>
   <div class="utility">
     <div class="container utility-inner">
-      <span>NOW AVAILABLE</span><span aria-hidden="true">•</span><span>SECURE CHECKOUT BY STRIPE</span>
+      <span>COMPLIMENTARY SHIPPING $49+</span>
+      <span aria-hidden="true">•</span>
+      <span>SECURE CHECKOUT</span>
     </div>
   </div>
 
@@ -20,26 +22,13 @@
       <button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav">MENU</button>
       <a class="wordmark" href="/" aria-label="Woof N’ Purr home">WOOF N’ PURR</a>
       <div class="masthead-actions">
-        <button class="text-action search-toggle" id="searchToggle" type="button">SEARCH</button>
+        <button class="text-action" id="searchToggle" type="button">SEARCH</button>
         <button class="text-action cart-open" id="cartOpen" type="button">BAG <span id="cartCount">(0)</span></button>
       </div>
     </div>
 
-    <nav class="container desktop-nav" aria-label="Primary navigation">
-      <button class="nav-item active" type="button" data-filter="All">SHOP ALL</button>
-      <button class="nav-item" type="button" data-filter="Home">HOME</button>
-      <button class="nav-item" type="button" data-filter="Travel">TRAVEL</button>
-      <button class="nav-item" type="button" data-filter="Grooming">GROOMING</button>
-      <button class="nav-item" type="button" data-filter="Wear">COLLARS</button>
-    </nav>
-
-    <div class="mobile-nav" id="mobileNav" hidden>
-      <button type="button" data-filter="All">SHOP ALL</button>
-      <button type="button" data-filter="Home">HOME</button>
-      <button type="button" data-filter="Travel">TRAVEL</button>
-      <button type="button" data-filter="Grooming">GROOMING</button>
-      <button type="button" data-filter="Wear">COLLARS</button>
-    </div>
+    <nav class="container desktop-nav" id="desktopNav" aria-label="Primary navigation"></nav>
+    <div class="mobile-nav" id="mobileNav" hidden></div>
 
     <div class="search-panel" id="searchPanel" hidden>
       <form class="container search-form" id="searchForm" role="search">
@@ -51,20 +40,21 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="heroSection">
       <div class="hero-image">
-        <img src="/assets/hero-pawbridge.jpg" alt="Dog using PawBridge Pet Stairs beside a sofa">
+        <img id="heroImage" src="/assets/hero-pawbridge.jpg" alt="Woof N’ Purr featured product">
       </div>
       <div class="hero-copy">
-        <p class="eyebrow">THE PAWBRIDGE COLLECTION</p>
-        <h1>A better way<br>up.</h1>
-        <p class="hero-description">PawBridge helps pets reach beds, sofas and favorite spaces with less jumping—without turning your home into a pet aisle.</p>
+        <p class="eyebrow" id="heroEyebrow">FEATURED</p>
+        <h1 id="heroTitle">Elevated essentials<br>for everyday life.</h1>
+        <p class="hero-description" id="heroDescription">Thoughtful pieces for pets and the homes they live in.</p>
         <div class="hero-product-line">
-          <span>PawBridge Pet Stairs</span><strong>$39.99</strong>
+          <span id="heroProductName">WOOF N’ PURR</span>
+          <strong id="heroPrice"></strong>
         </div>
         <div class="hero-actions">
-          <button class="button button-dark add-btn" type="button" data-id="pawbridge">ADD TO BAG</button>
-          <button class="button button-light" type="button" data-quick="pawbridge">DISCOVER</button>
+          <button class="button button-dark" id="heroAdd" type="button">SHOP FEATURED</button>
+          <button class="button button-light" id="heroDiscover" type="button">DISCOVER</button>
         </div>
       </div>
     </section>
@@ -78,7 +68,7 @@
     <section class="catalog container" id="products">
       <div class="catalog-head">
         <div>
-          <p class="eyebrow">THE COLLECTION</p>
+          <p class="eyebrow" id="catalogEyebrow">LIVE STRIPE CATALOG</p>
           <h2>Shop all</h2>
         </div>
         <label class="sort-control">
@@ -91,6 +81,8 @@
         </label>
       </div>
 
+      <div class="catalog-status" id="catalogStatus">LOADING COLLECTION…</div>
+
       <div class="active-search" id="activeSearch" hidden>
         <span id="activeSearchText"></span>
         <button type="button" id="clearSearch">CLEAR</button>
@@ -102,35 +94,44 @@
 
     <section class="service-strip">
       <div class="container service-grid">
-        <div><span>01</span><strong>SECURE PAYMENT</strong><p>Card details are handled on Stripe’s secure checkout.</p></div>
-        <div><span>02</span><strong>US SHIPPING</strong><p>Shipping address and phone are collected during checkout.</p></div>
-        <div><span>03</span><strong>PROMO CODES</strong><p>Stripe promotion codes are supported at checkout.</p></div>
+        <div><span>01</span><strong>STRIPE CATALOG</strong><p>Active Stripe products and prices populate the store automatically.</p></div>
+        <div><span>02</span><strong>SECURE PAYMENT</strong><p>Card and shipping information are handled by Stripe Checkout.</p></div>
+        <div><span>03</span><strong>LIVE UPDATES</strong><p>Add or edit products in Stripe without another website code push.</p></div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer-top">
-      <div><a class="footer-wordmark" href="/">WOOF N’ PURR</a><p>Elevated essentials for pets and the homes they live in.</p></div>
+      <div>
+        <a class="footer-wordmark" href="/">WOOF N’ PURR</a>
+        <p>Elevated essentials for pets and the homes they live in.</p>
+      </div>
       <div class="footer-links">
-        <a href="#products">SHOP</a>
+        <button type="button" id="footerShop">SHOP</button>
         <button type="button" id="footerSearch">SEARCH</button>
         <button type="button" class="cart-open">BAG</button>
       </div>
     </div>
-    <div class="container footer-bottom"><span>© 2026 WOOF N’ PURR</span><span>PAYMENTS SECURED BY STRIPE</span></div>
+    <div class="container footer-bottom">
+      <span>© 2026 WOOF N’ PURR</span>
+      <span>PAYMENTS SECURED BY STRIPE</span>
+    </div>
   </footer>
 
   <div class="backdrop" id="cartBackdrop" hidden>
-    <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
       <header class="drawer-header">
         <h2 id="cartTitle">YOUR BAG</h2>
         <button class="close-button" id="cartClose" type="button" aria-label="Close bag">CLOSE</button>
       </header>
       <div class="cart-items" id="cartItems"></div>
       <footer class="drawer-footer">
-        <div class="subtotal"><span>SUBTOTAL</span><strong id="cartSubtotal">$0.00</strong></div>
-        <p class="checkout-note">Shipping details are collected during secure checkout.</p>
+        <div class="subtotal">
+          <span>SUBTOTAL</span>
+          <strong id="cartSubtotal">$0.00</strong>
+        </div>
+        <p class="checkout-note">Shipping details are collected during secure Stripe checkout.</p>
         <button class="button button-dark checkout-button" id="checkoutButton" type="button">SECURE CHECKOUT</button>
       </footer>
     </aside>
@@ -138,8 +139,10 @@
 
   <div class="backdrop quick-backdrop" id="quickBackdrop" hidden>
     <section class="quick-view" role="dialog" aria-modal="true" aria-labelledby="quickName">
-      <button class="quick-close" id="quickClose" type="button" aria-label="Close product">CLOSE</button>
-      <div class="quick-media"><img id="quickImage" src="" alt=""></div>
+      <button class="quick-close" id="quickClose" type="button">CLOSE</button>
+      <div class="quick-media">
+        <img id="quickImage" src="" alt="">
+      </div>
       <div class="quick-info">
         <p class="eyebrow" id="quickCategory"></p>
         <h2 id="quickName"></h2>

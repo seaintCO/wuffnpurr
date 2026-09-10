@@ -1,43 +1,75 @@
-# Woof N’ Purr — LIVE Stripe Build
+# Woof N’ Purr V10 — Dynamic Stripe Catalog
 
-This is the launch build. All nine products are available now.
+Stripe is the live product database for this build.
 
-## Stripe is automatic
+## Vercel setup
 
-You do NOT have to manually create nine Price IDs and wire them into the code.
+Add ONE required Environment Variable:
 
-1. Add your Stripe secret key to `.env.local`.
-2. Run `npm run stripe:sync`.
-3. The script creates/syncs all nine products and prices in the Stripe mode represented by that key.
-4. The website checkout uses those Stripe products and server-side prices.
+STRIPE_SECRET_KEY = sk_live_...
 
-## Local test
+Then redeploy.
 
-```powershell
-Copy-Item ".env.example" ".env.local"
-notepad ".env.local"
-npm install
-npm run stripe:sync
-npm run dev
-```
+## How products appear
 
-Open http://localhost:5173
+The storefront automatically displays active Stripe products that have:
+- an ACTIVE one-time price
+- currency USD
+- an active Stripe Product
 
-## Vercel
+The site uses:
+- Stripe Product name → product title
+- Stripe Product description → description
+- Stripe Product image → store photography
+- Stripe Price → live storefront price
+- Stripe Product metadata `category` → category navigation
 
-Add only this required environment variable:
+The storefront checks Stripe on every page load and refreshes the catalog every 60 seconds.
 
-`STRIPE_SECRET_KEY=sk_live_...`
+## Useful Stripe metadata
 
-Then redeploy. The checkout endpoint will also auto-create/sync missing Stripe products on the first checkout, so the catalog cannot silently break if a product is missing.
+Optional metadata on each Stripe Product:
 
-## Checkout collects
+category = Home
+featured = true
+hero = true
+sort = 1
+store = woofnpurr
+hidden = true
 
-- Payment
-- Customer record
-- Billing details when needed
+`hero=true` makes that product the homepage hero.
+If no hero is set, a product named PawBridge is preferred automatically.
+
+### Shared Stripe account safety
+
+Products with no `store` metadata are included.
+Products explicitly tagged to a DIFFERENT `store` are excluded.
+
+If you share one Stripe account across businesses, tag Woof N’ Purr products:
+store = woofnpurr
+
+## Images
+
+Upload your product image directly to the Stripe Product.
+If a Stripe product has no image, the store displays a clean Woof N’ Purr placeholder instead of a fake product photo.
+
+## Checkout
+
+The browser sends only Stripe Price IDs and quantity.
+The Vercel function re-fetches and validates the Price/Product directly from Stripe before creating Checkout.
+
+Checkout collects:
+- payment
+- billing information as needed
 - US shipping address
-- Phone number
+- phone number
 - Stripe promotion codes
 
-Never commit your Stripe secret key to GitHub.
+## Local preview
+
+npm install
+npm run dev
+
+Local Vite preview uses the included Woof N’ Purr demo catalog because Vercel serverless API routes are not running locally.
+
+For the live Stripe catalog, deploy to Vercel with STRIPE_SECRET_KEY.
