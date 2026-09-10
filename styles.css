@@ -467,3 +467,42 @@ a{color:inherit;text-decoration:none}
   object-fit:contain;
   padding:15%;
 }
+
+
+/* V11 HDR polish */
+.hero-image{
+  background:#eeeae2;
+}
+.hero-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  image-rendering:auto;
+}
+.product-media img{
+  filter:saturate(1.03) contrast(1.02);
+}
+.product-card{
+  transition:transform .2s ease, opacity .2s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .product-card:hover{
+    transform:translateY(-2px);
+  }
+}
+.button,
+.product-action,
+.nav-item,
+.text-action{
+  transition:all .18s ease;
+}
+.button:focus-visible,
+.product-action:focus-visible,
+.nav-item:focus-visible,
+.text-action:focus-visible,
+.product-name:focus-visible,
+.product-media button:focus-visible{
+  outline:2px solid #17382f;
+  outline-offset:3px;
+}

@@ -1,75 +1,49 @@
-# Woof N’ Purr V10 — Dynamic Stripe Catalog
+# Woof N’ Purr V11 — HDR + Dynamic Stripe
 
-Stripe is the live product database for this build.
+This is the production-ready Woof N’ Purr storefront.
 
-## Vercel setup
+Included:
+- sharp HDR PawBridge hero image with dog
+- all existing product photography
+- dynamic Stripe product catalog
+- Stripe-hosted checkout
+- search
+- live category navigation
+- sorting
+- product quick-view
+- working shopping bag
+- quantity controls
+- mobile layout
+- Vercel deployment config
+- GitHub-ready structure
 
-Add ONE required Environment Variable:
+## Required Vercel Environment Variable
 
-STRIPE_SECRET_KEY = sk_live_...
+STRIPE_SECRET_KEY=sk_live_...
 
-Then redeploy.
+Optional:
+PUBLIC_SITE_URL=https://www.woofnpurr.shop
 
-## How products appear
+## Stripe product rules
 
-The storefront automatically displays active Stripe products that have:
-- an ACTIVE one-time price
-- currency USD
-- an active Stripe Product
+Products automatically show when they are:
+- Active in Stripe
+- using an active one-time USD price
 
-The site uses:
-- Stripe Product name → product title
-- Stripe Product description → description
-- Stripe Product image → store photography
-- Stripe Price → live storefront price
-- Stripe Product metadata `category` → category navigation
+Recommended Stripe metadata:
 
-The storefront checks Stripe on every page load and refreshes the catalog every 60 seconds.
+store=woofnpurr
+category=Home
+featured=true
+hero=true
+sort=1
 
-## Useful Stripe metadata
-
-Optional metadata on each Stripe Product:
-
-category = Home
-featured = true
-hero = true
-sort = 1
-store = woofnpurr
-hidden = true
-
-`hero=true` makes that product the homepage hero.
-If no hero is set, a product named PawBridge is preferred automatically.
-
-### Shared Stripe account safety
-
-Products with no `store` metadata are included.
-Products explicitly tagged to a DIFFERENT `store` are excluded.
-
-If you share one Stripe account across businesses, tag Woof N’ Purr products:
-store = woofnpurr
-
-## Images
-
-Upload your product image directly to the Stripe Product.
-If a Stripe product has no image, the store displays a clean Woof N’ Purr placeholder instead of a fake product photo.
-
-## Checkout
-
-The browser sends only Stripe Price IDs and quantity.
-The Vercel function re-fetches and validates the Price/Product directly from Stripe before creating Checkout.
-
-Checkout collects:
-- payment
-- billing information as needed
-- US shipping address
-- phone number
-- Stripe promotion codes
+Use hero=true on PawBridge if you want Stripe to control the homepage hero.
 
 ## Local preview
 
 npm install
 npm run dev
 
-Local Vite preview uses the included Woof N’ Purr demo catalog because Vercel serverless API routes are not running locally.
-
-For the live Stripe catalog, deploy to Vercel with STRIPE_SECRET_KEY.
+Local preview uses the included fallback catalog.
+The live Vercel deployment loads products directly from Stripe.

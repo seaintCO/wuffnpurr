@@ -7,7 +7,7 @@ const fallbackProducts = [
     "price": 39.99,
     "unitAmount": 3999,
     "currency": "usd",
-    "image": "/assets/pawbridge-stairs.jpg",
+    "image": "/assets/pawbridge-stairs-hdr.png",
     "category": "Home",
     "featured": true,
     "hero": true,
