@@ -295,7 +295,7 @@ function cleanCart() {
 }
 
 function renderCart() {
-  cleanCart();
+  if (state.stripeConnected) cleanCart();
   const entries = Object.entries(state.cart);
 
   const count = entries.reduce((sum, [, quantity]) => sum + quantity, 0);
@@ -557,12 +557,26 @@ document.addEventListener("keydown", event => {
   }
 });
 
+async function verifyCheckout(sessionId) {
+  showToast("VERIFYING PAYMENT…");
+  try {
+    const response = await fetch(`/api/checkout-session?session_id=${encodeURIComponent(sessionId)}`);
+    const data = await response.json();
+    if (!response.ok || !data.paid) throw new Error("Payment not confirmed");
+    state.cart = {};
+    saveCart();
+    renderCart();
+    showToast("PAYMENT RECEIVED — THANK YOU");
+  } catch {
+    showToast("PAYMENT IS STILL PROCESSING — CHECK YOUR EMAIL");
+  } finally {
+    history.replaceState({}, "", location.pathname);
+  }
+}
+
 const params = new URLSearchParams(location.search);
-if (params.get("checkout") === "success") {
-  state.cart = {};
-  saveCart();
-  setTimeout(() => showToast("PAYMENT RECEIVED — THANK YOU"), 250);
-  history.replaceState({}, "", location.pathname);
+if (params.get("checkout") === "success" && params.get("session_id")) {
+  setTimeout(() => verifyCheckout(params.get("session_id")), 250);
 }
 
 if (params.get("checkout") === "cancelled") {

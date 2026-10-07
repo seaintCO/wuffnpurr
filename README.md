@@ -17,12 +17,31 @@ Included:
 - Vercel deployment config
 - GitHub-ready structure
 
-## Required Vercel Environment Variable
+## Required Vercel Environment Variables
 
 STRIPE_SECRET_KEY=sk_live_...
-
-Optional:
 PUBLIC_SITE_URL=https://www.woofnpurr.shop
+STRIPE_WEBHOOK_SECRET=whsec_...
+STRIPE_STORE_SLUG=woofnpurr
+STRIPE_AUTOMATIC_TAX=false
+FREE_SHIPPING_THRESHOLD_CENTS=4900
+STANDARD_SHIPPING_AMOUNT_CENTS=699
+
+Optional paid-order email notification:
+
+RESEND_API_KEY=re_...
+ORDER_NOTIFICATION_EMAIL=orders@example.com
+ORDER_FROM_EMAIL=Woof N’ Purr Orders <orders@woofnpurr.shop>
+
+Create a Stripe webhook endpoint at:
+
+https://www.woofnpurr.shop/api/stripe-webhook
+
+Listen for `checkout.session.completed` and
+`checkout.session.async_payment_succeeded`. Copy its signing secret into
+`STRIPE_WEBHOOK_SECRET`.
+
+Activate Stripe Tax before setting `STRIPE_AUTOMATIC_TAX=true`.
 
 ## Stripe product rules
 
